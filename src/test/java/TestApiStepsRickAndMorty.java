@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static utils.Configuration.getConfigurationValue;
 
 public class TestApiStepsRickAndMorty {
     public static String mortySmithID;
@@ -20,7 +21,7 @@ public class TestApiStepsRickAndMorty {
 
     public static void findInfoAboutMortySmith() {
         Response findInfoAboutMortySmith = given()
-                .baseUri("https://rickandmortyapi.com/api/")
+                .baseUri(getConfigurationValue("baseUriRickAndMorty"))
                 .contentType(ContentType.JSON)
                 .when().get("character/?name=Morty Smith&status=alive")
                 .then()
@@ -42,7 +43,7 @@ public class TestApiStepsRickAndMorty {
 
     public static void findLastEpisode() {
         Response findLastEpisode = given()
-                .baseUri("https://rickandmortyapi.com/api/")
+                .baseUri(getConfigurationValue("baseUriRickAndMorty"))
                 .contentType(ContentType.JSON)
                 .when().get("episode")
                 .then()
@@ -54,7 +55,7 @@ public class TestApiStepsRickAndMorty {
 
     public static void findLastCharacterIDInLastEpisode() {
         Response findLastCharacterIDInLastEpisode = given()
-                .baseUri("https://rickandmortyapi.com/api/")
+                .baseUri(getConfigurationValue("baseUriRickAndMorty"))
                 .contentType(ContentType.JSON)
                 .when().get("episode/" + lastEpisodeID)
                 .then()
@@ -71,7 +72,7 @@ public class TestApiStepsRickAndMorty {
 
     public static void infoLastCharacterInLastEpisode() {
         Response infoLastCharacterInLastEpisode = given()
-                .baseUri("https://rickandmortyapi.com/api/")
+                .baseUri(getConfigurationValue("baseUriRickAndMorty"))
                 .contentType(ContentType.JSON)
                 .when().get("character/" + lastCharacterInLastEpisodeID)
                 .then()
