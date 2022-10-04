@@ -4,7 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.core.IsNull.notNullValue;
 import static utils.Configuration.getConfigurationValue;
 
 public class TestApiStepsRickAndMorty {
@@ -27,7 +26,6 @@ public class TestApiStepsRickAndMorty {
                 .then()
                 .assertThat()
                 .statusCode(200)
-                .and().body("results.id", notNullValue())
                 .extract().response();
         JSONObject mortySmith = (JSONObject) new JSONObject(findInfoAboutMortySmith.getBody().asString()).getJSONArray("results").get(0);
         mortySmithID = mortySmith.get("id").toString();
