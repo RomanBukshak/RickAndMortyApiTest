@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
+import static utils.Configuration.getConfigurationValue;
 
 public class TestApiReqres {
     public static void createUser() throws IOException {
@@ -17,7 +18,7 @@ public class TestApiReqres {
                 .body(body.put("name", "Tomato"))
                 .body(body.put("job", "Eat maket"))
                 .body(body.toString())
-                .baseUri("https://reqres.in/")
+                .baseUri(getConfigurationValue("baseUriReqres"))
                 .when()
                 .post("api/users")
                 .then()
