@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsNull.notNullValue;
 
-public class TestApiSteps {
+public class TestApiStepsRickAndMorty {
     public static String mortySmithID;
     public static String mortySmithLocation;
     public static int mortySmithLastEpisode;
